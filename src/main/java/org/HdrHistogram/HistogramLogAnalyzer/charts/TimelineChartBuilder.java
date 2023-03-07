@@ -124,7 +124,7 @@ public class TimelineChartBuilder {
                     XYDataset dataset = plot.getDataset();
                     for (int i = 0; i < dataset.getSeriesCount(); i++) {
                         String key = (String)dataset.getSeriesKey(i);
-                        if (key.endsWith("%") || key.equals("Max")) {
+                        if (key.endsWith("%") || key.equals("Max") || key.contains("(")) {
                             renderer.setSeriesVisible(i, b);
                         }
                     }
@@ -294,7 +294,7 @@ public class TimelineChartBuilder {
             if (key.contains("%'ile")) {
                 renderer.setSeriesVisible(i, appProperties.getMwpProperties().isMWPVisible());
                 renderer.setSeriesPaint(i, ColorHelper.getColor(i));
-            } else if (key.endsWith("%") || key.equals("Max")) {
+            } else if (key.endsWith("%") || key.equals("Max") || key.contains("(")) {
                 renderer.setSeriesVisible(i, appProperties.getHplProperties().isHPLVisible());
                 renderer.setSeriesPaint(i, ColorHelper.getHPLColor(key));
                 renderer.setSeriesStroke(i, new BasicStroke(2.0f));

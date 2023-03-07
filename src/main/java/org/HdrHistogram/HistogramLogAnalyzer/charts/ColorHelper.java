@@ -49,6 +49,19 @@ class ColorHelper {
             case "Max":
                 return Color.RED;
         }
+        if (percentileString.startsWith("99% (")) {
+            return Color.GREEN;
+        }
+        else if (percentileString.startsWith("99.9% (")) {
+            return Color.BLUE;
+        }
+        else if (percentileString.startsWith("99.99% (")) {
+            return new Color(128, 0, 128); // purple
+        }
+        else if (percentileString.startsWith("Max (")) {
+            return Color.RED;
+        }
+
         throw new RuntimeException("unexpected HPL: "+percentileString);
     }
 }

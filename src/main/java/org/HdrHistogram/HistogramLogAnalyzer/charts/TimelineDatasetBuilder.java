@@ -81,7 +81,7 @@ class TimelineDatasetBuilder {
                     String key = String.valueOf(po.getPercentileValue() * 100);
                     key = !key.contains(".") ? key : key.replaceAll("0*$", "").replaceAll("\\.$", "");
 
-                    CommonSeries series = createSeries(key + "%", chartType);
+                    CommonSeries series = createSeries(key + "% (" + String.format("%.2f", po.getLatencyAxisValue()) + ")", chartType);
                     series.add(po.getLatencyAxisValue(), ret.getDomainBounds());
                     ret.add(series);
                 }
@@ -95,7 +95,7 @@ class TimelineDatasetBuilder {
                     maxLatencyAxisValue = Math.max(maxLatencyAxisValue, mpo.getLatencyAxisValue());
                 }
 
-                CommonSeries series = createSeries("Max", chartType);
+                CommonSeries series = createSeries("Max" + " (" + String.format("%.2f", maxLatencyAxisValue) + ")", chartType);
                 series.add(maxLatencyAxisValue, ret.getDomainBounds());
                 ret.add(series);
 
